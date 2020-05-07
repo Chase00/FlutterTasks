@@ -97,7 +97,14 @@ class _MyAppState extends State<MyApp> {
                   },
                 ),
               )
-            )
+            ),
+          onDismissed: (direction) {
+            setState(() {
+              tasks.removeAt(index);
+              saved.add(tasks[index]);
+              // ^ Doesn't work half the time
+            });
+            }
           );
         },
       )
