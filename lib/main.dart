@@ -81,8 +81,8 @@ class _MyAppState extends State<MyApp> {
               BorderRadius.circular(8)),
               child: ListTile(
                 title: Text(tasks[index]),
-                  leading: IconButton(
-                    icon: Icon(Icons.event_note),
+                  leading: Icon(
+                    Icons.event_note,
                     color: Colors.white30,
                   ),
                 trailing: IconButton(
@@ -117,8 +117,8 @@ class _MyAppState extends State<MyApp> {
           final Iterable<ListTile> tiles = saved.map(
                 (text) {
               return ListTile(
-                leading: IconButton(
-                  icon: Icon(Icons.check),
+                leading: Icon(
+                  Icons.check,
                   color: Colors.green,
                 ),
                 title: Text(text),
