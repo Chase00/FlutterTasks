@@ -16,7 +16,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   List tasks = List();
-  List saved = List();
+  List completed = List();
   String input = "";
 
   @override
@@ -33,7 +33,7 @@ class _MyAppState extends State<MyApp> {
       appBar: AppBar(
         title: Text("Task List"),
         actions: <Widget>[
-          IconButton(icon: Icon(Icons.star), onPressed: _pushStarred),
+          IconButton(icon: Icon(Icons.check), tooltip: 'Completed Tasks', onPressed: _pushStarred),
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -86,12 +86,12 @@ class _MyAppState extends State<MyApp> {
                     color: Colors.white30,
                   ),
                 trailing: IconButton(
-                  icon: Icon(Icons.star_border),
+                  icon: Icon(Icons.check),
                   color: Colors.deepPurple[300],
                   iconSize: 30,
                   onPressed: () {
                     setState(() {
-                      saved.add(tasks[index]);
+                      completed.add(tasks[index]);
                       tasks.removeAt(index);
                     });
                   },
@@ -101,7 +101,7 @@ class _MyAppState extends State<MyApp> {
           onDismissed: (direction) {
             setState(() {
               tasks.removeAt(index);
-              saved.add(tasks[index]);
+              completed.add(tasks[index]);
               // ^ Doesn't work half the time
             });
             }
@@ -114,7 +114,7 @@ class _MyAppState extends State<MyApp> {
     Navigator.of(context).push(
       MaterialPageRoute<void>(
         builder: (BuildContext context) {
-          final Iterable<ListTile> tiles = saved.map(
+          final Iterable<ListTile> tiles = completed.map(
                 (text) {
               return ListTile(
                 leading: Icon(
@@ -139,4 +139,5 @@ class _MyAppState extends State<MyApp> {
         },
       ),
     );
-}}
+  }
+}
